@@ -5,7 +5,8 @@
   "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd client; webpack; cd .."
+    "serve-client": "cd client; node server.js",
+    "serve-api": "cd api; node server.js"
   },
   "proxy": "http://localhost:4000",
   "keywords": [],
@@ -23,12 +24,14 @@
   },
   "dependencies": {
     "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "css-loader": "^0.28.11",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "node-sass": "^4.8.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "request": "^2.85.0",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0"
   }

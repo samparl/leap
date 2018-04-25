@@ -30,15 +30,18 @@ export class AirportInput extends React.Component {
 
   render() {
     const regex = new RegExp(this.props.value, 'i');
-    const options = this.props.options.filter(val => val.match(regex) && val !== this.props.value);
+    // const options = this.props.options.filter(val => val.match(regex) && val !== this.props.value);
     const dropdown = (
       <ul className="autocomplete-dropdown" onClick={ this.props.onChange }>
         {
           this.props.options.map((option, index) =>
-          <option className={ this.state.curr === index ? 'current' : null }
-            ref={ this.state.curr === index ? this.ref : null }
-            key={ index }
-            value={ option }>{ option }</option>)
+            <option className={ this.state.curr === index ? 'current' : null }
+              ref={ this.state.curr === index ? this.ref : null }
+              key={ index }
+              value={ option.codeIataAirport }>
+                { `${option.nameAirport} (${option.codeIataAirport})` }
+            </option>
+          )
         }
       </ul>
     );
@@ -47,7 +50,7 @@ export class AirportInput extends React.Component {
       <div className="airport-input" onKeyDown={ this.handleKeyDown.bind(this) }>
         <input value={ this.props.value } onChange={ this.props.onChange } />
         {
-          this.props.value && options.length ? dropdown : null
+          this.props.value && this.props.options.length ? dropdown : null
         }
       </div>
     );
