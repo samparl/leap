@@ -10,7 +10,13 @@
     position: absolute;
     bottom: -1.5rem;
     left: 0;
-    width: 100%;
+  }
+
+  input {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #eee;
+    font-size: 1em;
   }
 
   input:focus + .autocomplete-dropdown,
@@ -21,7 +27,6 @@
     position: absolute;
     bottom: -1.5rem;
     left: 0;
-    width: 100%;
     height: 1.5rem;
 
     option {

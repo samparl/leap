@@ -6,8 +6,10 @@ import { AirportSearch } from './components';
 export class App extends React.Component {
   render() {
     return (
-      <div>
-        Leap is up!
+      <div className="app">
+        <div className="app-header">
+          <span className="app-title">Leap</span>
+        </div>
         <AirportSearch />
       </div>
     );
