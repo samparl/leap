@@ -7,13 +7,16 @@ This application was written with Node.js and Express.js on the back end, and wi
 # Set Up
 1. Clone the repository from github.
 2. Get an API key from the current provider: https://aviation-edge.com/developers/
-3. Create a .env file in the project's root folder and configure it with
+3. Create a .env file in the project's root folder and configure it with (* see below for examples):
   1. CLIENT_PORT - the port from which you will serve the UI
   2. API_PORT - the port from which you will serve the API
   3. AIRPORT_API_KEY - the key you obtained in the last step
   4. API_URL - the host address of API pointed to by the client
+4. Run `serve-api` and `serve-client` on your console
+5. Navigate to `http://localhost:${CLIENT_PORT}`,
+where  `CLIENT_PORT` is the value configure in your .env file in the step above
 
-Some sample values for the .env file configuration:
+\* Some sample values for the .env file configuration:
 CLIENT_PORT=4000
 API_PORT=8000
 API_URL=http://localhost:8000
