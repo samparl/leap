@@ -9,47 +9,41 @@ export class AirportSearch extends React.Component {
     this.service = new AirportService();
     this.state = {
       start: {
-        text: '',
-        airports: []
+        value: '',
+        options: [],
+        loading: false
       },
       end: {
-        text: '',
-        airports: []
+        value: '',
+        options: [],
+        loading: false
       }
     };
   }
 
   setStart(event) {
-    const text = event.target.value;
-    this.service.getAirports(text)
-      .then(airports => this.setState({ start: { text, airports } }));
+    const value = event.target.value;
+    this.service.getAirports(value)
+      .then(options => this.setState({ start: { value, options } }));
   }
 
   setEnd(event) {
-    const text = event.target.value;
-    this.service.getAirports(text)
-      .then(airports => this.setState({ end: { text, airports } }));
-  }
-
-  filteredAirports(query) {
-    return this.state.airports.filter(airport => {
-      return airport.nameAirport.match(query) ||
-        airport.codeIataAirport.match(query) &&
-        airport.codeIataAirport !== query;
-    });
+    const value = event.target.value;
+    this.service.getAirports(value)
+      .then(options => this.setState({ end: { value, options } }));
   }
 
   render() {
     const { start, end } = this.state;
-    const startOptions = start.airports;
-    const endOptions = end.airports;
+    const startOptions = start.options;
+    const endOptions = end.options;
 
     return (
       <div className="airport-search">
         <div className="airport-search-title">Airport Search</div>
         <div className="airport-search-inputs">
-          <AirportInput value={ start.text } onChange={ this.setStart.bind(this) } options={ startOptions } />
-          <AirportInput value={ end.text } onChange={ this.setEnd.bind(this) } options={ endOptions } />
+          <AirportInput { ...start } onChange={ this.setStart.bind(this) } />
+          <AirportInput { ...end } onChange={ this.setEnd.bind(this) } />
         </div>
       </div>
     );
