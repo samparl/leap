@@ -19,7 +19,7 @@
     font-size: 1em;
   }
 
-  input:focus + .autocomplete-dropdown,
+  .airport-input-wrapper > input:focus + .autocomplete-dropdown,
   .autocomplete-dropdown:active,
   .autocomplete-dropdown:focus {
     display: block;

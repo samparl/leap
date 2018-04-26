@@ -35,9 +35,6 @@ export class AirportSearch extends React.Component {
 
   render() {
     const { start, end } = this.state;
-    const startOptions = start.options;
-    const endOptions = end.options;
-
     return (
       <div className="airport-search">
         <div className="airport-search-title">Airport Search</div>
