@@ -22,15 +22,17 @@ export class AirportSearch extends React.Component {
   }
 
   setStart(event) {
+    this.setState({ start: { ...this.state.start, loading: true } });
     const value = event.target.value;
     this.service.getAirports(value)
-      .then(options => this.setState({ start: { value, options } }));
+      .then(options => this.setState({ start: { value, options, loading: false } }));
   }
 
   setEnd(event) {
+    this.setState({ end: { ...this.state.end, loading: true } });
     const value = event.target.value;
     this.service.getAirports(value)
-      .then(options => this.setState({ end: { value, options } }));
+      .then(options => this.setState({ end: { value, options, loading: false } }));
   }
 
   render() {

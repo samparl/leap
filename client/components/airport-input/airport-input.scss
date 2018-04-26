@@ -1,6 +1,40 @@
+@keyframes loading {
+  0% {
+    width: 0%;
+  }
+
+  20% {
+    width: 100%;
+    left: 0;
+  }
+
+  40% {
+    right: 0;
+  }
+
+  60% {
+    width: 0;
+  }
+
+  80% {
+    width: 100%;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
 .airport-input {
   display: inline-block;
   position: relative;
+
+  &.loading .loading-bar {
+    position: absolute;
+    bottom: 0;
+    border-bottom: 2px solid blue;
+    animation: loading 1s infinite;
+  }
 
   .autocomplete-dropdown {
     display: none;
@@ -19,7 +53,7 @@
     font-size: 1em;
   }
 
-  .airport-input-wrapper > input:focus + .autocomplete-dropdown,
+  input:focus + .autocomplete-dropdown,
   .autocomplete-dropdown:active,
   .autocomplete-dropdown:focus {
     display: block;
@@ -39,7 +73,6 @@
       }
 
       &:hover {
-        background: #eee;
         cursor: pointer;
       }
     }

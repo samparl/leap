@@ -28,13 +28,20 @@ export class AirportInput extends React.Component {
     }
   }
 
+  onHover(index) {
+    this.setState({ curr: index });
+  }
+
   render() {
-    const regex = new RegExp(this.props.value, 'i');
-    const dropdown = (
-      <ul className="autocomplete-dropdown" onClick={ this.props.onChange }>
+    const { value, loading, options, onChange } = this.props;
+    const classes = `airport-input ${ loading ? 'loading' : ''}`;
+    const dropdown = (!loading && value && options.length) ? (
+      <ul className="autocomplete-dropdown" onClick={ onChange }>
         {
-          this.props.options.map((option, index) =>
-            <option ref={ this.state.curr === index ? this.ref : null }
+          options.map((option, index) =>
+            <option className={ this.state.curr === index ? 'current' : null }
+              onMouseEnter={ this.onHover.bind(this, index) }
+              ref={ this.state.curr === index ? this.ref : null }
               value={ option.codeIataAirport }
               key={ index }>
                 { `${option.nameAirport} (${option.codeIataAirport})` }
@@ -42,14 +49,12 @@ export class AirportInput extends React.Component {
           )
         }
       </ul>
-    );
+    ) : null;
 
     return (
-      <div className="airport-input" onKeyDown={ this.handleKeyDown.bind(this) }>
-        <input value={ this.props.value } onChange={ this.props.onChange } />
-        {
-          this.props.value && this.props.options.length ? dropdown : null
-        }
+      <div className={ classes } onKeyDown={ this.handleKeyDown.bind(this) }>
+          <input { ...{ value, onChange } } />
+          { dropdown }
       </div>
     );
   }
