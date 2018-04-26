@@ -53,8 +53,9 @@ export class AirportInput extends React.Component {
 
     return (
       <div className={ classes } onKeyDown={ this.handleKeyDown.bind(this) }>
-          <input { ...{ value, onChange } } />
-          { dropdown }
+        <div className="loading-bar"></div>
+        <input { ...{ value, onChange } } />
+        { dropdown }
       </div>
     );
   }
